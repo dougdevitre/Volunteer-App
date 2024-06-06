@@ -1,20 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
+    font-family: 'Roboto', sans-serif;
+    background-color: #f8f9fa;
     margin: 0;
     padding: 0;
+    color: #343a40;
 }
 
 .container {
-    max-width: 600px;
-    margin: 50px auto;
-    padding: 20px;
-    background-color: white;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 700px;
+    margin: 60px auto;
+    padding: 30px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
 }
 
 h1, h2 {
     text-align: center;
+    color: #495057;
+}
+
+h1 {
+    margin-bottom: 20px;
 }
 
 form {
@@ -30,25 +39,38 @@ form {
 
 label {
     margin-bottom: 5px;
+    font-weight: 500;
+    color: #495057;
 }
 
 input[type="text"], input[type="date"], input[type="number"] {
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+    padding: 12px;
+    border: 1px solid #ced4da;
+    border-radius: 6px;
+    font-size: 16px;
+    color: #495057;
+    background-color: #e9ecef;
+}
+
+input[type="text"]:focus, input[type="date"]:focus, input[type="number"]:focus {
+    border-color: #80bdff;
+    outline: none;
+    background-color: #ffffff;
 }
 
 button {
-    padding: 10px;
-    background-color: #28a745;
+    padding: 12px;
+    background-color: #007bff;
     color: white;
     border: none;
-    border-radius: 4px;
+    border-radius: 6px;
+    font-size: 16px;
     cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
 button:hover {
-    background-color: #218838;
+    background-color: #0056b3;
 }
 
 table {
@@ -58,11 +80,34 @@ table {
 }
 
 th, td {
-    border: 1px solid #ddd;
-    padding: 8px;
-    text-align: center;
+    border: 1px solid #dee2e6;
+    padding: 12px;
+    text-align: left;
+    font-size: 16px;
+    color: #495057;
 }
 
 th {
-    background-color: #f2f2f2;
+    background-color: #e9ecef;
+    font-weight: 500;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #f8f9fa;
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 20px;
+    }
+
+    input[type="text"], input[type="date"], input[type="number"], button {
+        font-size: 14px;
+        padding: 10px;
+    }
+
+    th, td {
+        padding: 10px;
+        font-size: 14px;
+    }
 }
