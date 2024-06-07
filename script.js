@@ -1,20 +1,24 @@
-document.getElementById('hoursForm').addEventListener('submit', function(event) {
-    event.preventDefault();
+function calculateTotals() {
+    let totalHours = 0;
+    let totalFood = 0;
+    let totalPeople = 0;
 
-    const name = document.getElementById('name').value;
-    const date = document.getElementById('date').value;
-    const hours = document.getElementById('hours').value;
+    const hoursInputs = document.querySelectorAll('.hours');
+    const foodInputs = document.querySelectorAll('.food');
+    const peopleInputs = document.querySelectorAll('.people');
 
-    const table = document.getElementById('entriesTable').getElementsByTagName('tbody')[0];
-    const newRow = table.insertRow();
+    hoursInputs.forEach(input => totalHours += Number(input.value));
+    foodInputs.forEach(input => totalFood += Number(input.value));
+    peopleInputs.forEach(input => totalPeople += Number(input.value));
 
-    const nameCell = newRow.insertCell(0);
-    const dateCell = newRow.insertCell(1);
-    const hoursCell = newRow.insertCell(2);
+    document.getElementById('totalHours').textContent = totalHours;
+    document.getElementById('totalFood').textContent = totalFood;
+    document.getElementById('totalPeople').textContent = totalPeople;
 
-    nameCell.textContent = name;
-    dateCell.textContent = date;
-    hoursCell.textContent = hours;
+    const firstNames = Array.from(document.querySelectorAll('.first-name')).map(input => input.value).filter(name => name);
+    const lastNames = Array.from(document.querySelectorAll('.last-name')).map(input => input.value).filter(name => name);
 
-    document.getElementById('hoursForm').reset();
-});
+    const summary = `In total, volunteers worked ${totalHours} hours, processed ${totalFood} pounds of food, and helped ${totalPeople} people.`;
+    const namesSummary = firstNames.length > 0 ? ` Volunteers: ${firstNames.join(', ')} ${lastNames.join(', ')}.` : '';
+    document.getElementById('summary').textContent = summary + namesSummary;
+}
